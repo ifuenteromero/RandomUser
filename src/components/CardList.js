@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './Card'
 
 class CardList extends React.Component{
     render(){
@@ -6,27 +7,23 @@ class CardList extends React.Component{
         const {data : people} = this.props;
         return(
             <ul>
-       {people.map((person,index)=>{
-         const imgSrc = person.picture.large;
-         const fullName = `${person.name.first} ${person.name.last}`;
-         const age = person.dob.age;
-         const city = person.location.city;
-         return(
-                 <li className="card mb-3" style={{maxWidth:540}} key={index} >
-                    <div className="row no-gutters">
-                        <div className="col-md-4">
-                            <img className="card-img"  src={imgSrc} alt={fullName} />
-                        </div>
-                        <div className="col-md-8">
-                              <div className="card-body">
-                                  <h5 className="card-title">{`${fullName}, ${age}`}</h5>
-                                  <p className="card-text">{city}</p>
-                              </div>
-                          </div>
-                      </div>
-                 </li>
-          )})}
-      </ul>
+                {people.map((person,index)=>{
+                    const infoCard={
+                        name : `${person.name.first} ${person.name.last}`,
+                        imgUrl : person.picture.large,
+                        age:person.dob.age,
+                        city :person.location.city
+                         }
+
+                    return( 
+                        <li className="card mb-3" style={{maxWidth:540}} key ={index} >
+                            <Card data = {infoCard} /> 
+                        </li>
+                    )
+                            }
+                            )
+                }
+            </ul>
         );
     }
 
