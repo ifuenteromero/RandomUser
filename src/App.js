@@ -21,14 +21,21 @@ class App extends React.Component {
   }
 
   render() {
-    const people = this.state.people;
+    const {people} = this.state;
     console.log(people);
     return (
-      <p>holi</p>
+      <ul>
+       {people.map((person,index)=>{
+         const fullName =  `${person.name.first} ${person.name.last}`;
+         return(
+                 <li key={index} >
+                     <img src={person.picture.medium} alt={fullName} />
+                     <h1>{fullName}</h1>
+                 </li>
+          )})}
+      </ul>
     );
   }
-
-
 }
 
 
