@@ -28,10 +28,12 @@ class App extends React.Component {
        {people.map((person,index)=>{
          const fullName = `${person.name.first} ${person.name.last}`;
          const age = person.dob.age;
+         const city = person.location.city;
          return(
                  <li key={index} >
                      <img src={person.picture.medium} alt={fullName} />
                      <h1>{`${fullName}, ${age}`}</h1>
+                     <h2>{city}</h2>
                  </li>
           )})}
       </ul>
