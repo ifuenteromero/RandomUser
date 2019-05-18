@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import CardList from './components/CardList'
+import CardList from './components/CardList';
+import FilterGender from './components/FilterGender';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,7 +25,10 @@ class App extends React.Component {
   render() {
     const {people} = this.state;
     return (  
-      <CardList data = {people}/>
+      <React.Fragment>
+         <FilterGender />
+         <CardList data = {people}/>
+      </React.Fragment>
     );
   }
 }
