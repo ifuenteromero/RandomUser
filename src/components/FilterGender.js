@@ -1,6 +1,12 @@
 import React from 'react';
 
 class FilterGender extends React.Component{
+    constructor(props){
+        super(props);
+        this.gender=this.props.actionPerform;
+    }
+
+
     render(){
         return(
             <React.Fragment>
@@ -10,7 +16,8 @@ class FilterGender extends React.Component{
                         className="custom-control-input" 
                         id="female" 
                         value="female" 
-                        name="gender"/>
+                        name="gender"
+                        onClick={this.gender}/>
                     <label 
                         className="custom-control-label"
                         htmlFor="female">
@@ -23,7 +30,8 @@ class FilterGender extends React.Component{
                         className="custom-control-input"
                         id="male" 
                         value="male"
-                        name="gender"/>
+                        name="gender"
+                        onClick={this.gender}/>
                     <label 
                         className="custom-control-label"
                         htmlFor="male">

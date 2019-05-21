@@ -8,9 +8,27 @@ class App extends React.Component {
     super(props);
     this.state = {
       people: [],
+      filters :{
+        gender:[],
+        cities :[]
+      }
+      
     }
     this.getData();
+    this.gender=this.gender.bind(this);
   }
+
+gender(event){
+  this.setState(prevState=>{
+    return{
+      filters:{...prevState.filters,
+    gender:event.currentTarget.value}
+  }
+  }
+
+  );
+
+}
 
   getData() {
     fetch('https://randomuser.me/api/?results=50')
@@ -26,7 +44,7 @@ class App extends React.Component {
     const {people} = this.state;
     return (  
       <React.Fragment>
-         <FilterGender />
+         <FilterGender actionPerform={this.gender}/>
          <CardList data = {people}/>
       </React.Fragment>
     );
